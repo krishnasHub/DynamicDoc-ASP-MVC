@@ -26,6 +26,7 @@ namespace DynamicDoc2.DataAccess
             ISession session = sessionFactory.OpenSession();
             Session = session;
 
+
             return Session;
         }
 
