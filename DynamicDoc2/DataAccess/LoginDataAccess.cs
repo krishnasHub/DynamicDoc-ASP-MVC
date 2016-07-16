@@ -19,6 +19,14 @@ namespace DynamicDoc2.DataAccess
             return count == 1;
         }
 
+        public void LoginUser(string userName)
+        {
+            var userDao = new UserDataAccess();
+            var user = userDao.GetUserByName(userName);
+            user.LoggedIn = 1;
+            userDao.SaveUser(user);
+        }
+
         public void Logout(string userName)
         {
             var userDao = new UserDataAccess();

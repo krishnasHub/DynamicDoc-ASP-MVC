@@ -14,27 +14,26 @@ namespace DynamicDoc2.Controllers
         public JsonResult Login(string userName, string password)
         {
             if (userName == null || password == null)
-                return Json(new { IsSuccess = false, Error = "Invalid arguments."}, JsonRequestBehavior.AllowGet);
+                return Json(new { isSuccess = false, error = "Invalid arguments."}, JsonRequestBehavior.AllowGet);
 
             var loginDao = new LoginDataAccess();
-            var userDao = new UserDataAccess();
+            
 
             //var user = obj.getEmployeeById(1);
             var checkSuccess = loginDao.CheckLogin(userName, password);
             User user = null;
             if(checkSuccess)
             {
+                var userDao = new UserDataAccess();
                 user = userDao.GetUserByName(userName);
-                if (user == null)                
-                    user = userDao.GetUserByEmail(userName);                
 
                 if (user.LoggedIn == 1)
-                    return Json(new { IsSuccess = true, User = user, Warning = "Already Logged in!"}, JsonRequestBehavior.AllowGet);
-                user.LoggedIn = 1;
-                userDao.SaveUser(user);
+                    return Json(new { isSuccess = true, user = user, warning = "User already logged in." }, JsonRequestBehavior.AllowGet);
+                else
+                    loginDao.LoginUser(user.Name);
             }
 
-            return Json(new { IsSuccess = checkSuccess, User = user}, JsonRequestBehavior.AllowGet);
+            return Json(new { isSuccess = checkSuccess, user = user}, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult Logout(string userName)
@@ -42,7 +41,7 @@ namespace DynamicDoc2.Controllers
             var loginDao = new LoginDataAccess();
             loginDao.Logout(userName);
 
-            return Json(new { IsSuccess = true }, JsonRequestBehavior.AllowGet);
+            return Json(new { isSuccess = true }, JsonRequestBehavior.AllowGet);
         }
     }
 }

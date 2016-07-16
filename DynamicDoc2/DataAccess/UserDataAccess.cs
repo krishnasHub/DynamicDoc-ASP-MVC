@@ -18,16 +18,11 @@ namespace DynamicDoc2.DataAccess
         {
             var session = GetSession();
             var criteria = session.CreateCriteria<User>();
-            var user = criteria.List<User>().FirstOrDefault<User>(u => u.Name.Equals(userName));
-
-            return user;
-        }
-
-        public User GetUserByEmail(string emailId)
-        {
-            var session = GetSession();
-            var criteria = session.CreateCriteria<User>();
-            var user = criteria.List<User>().FirstOrDefault<User>(u => u.EmailId.Equals(emailId));
+            User user;
+            if (userName.Contains("@"))
+                user = criteria.List<User>().FirstOrDefault<User>(u => u.EmailId.Equals(userName));
+            else
+                user = criteria.List<User>().FirstOrDefault<User>(u => u.Name.Equals(userName));
 
             return user;
         }
