@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="DynamicDoc2" namespace="DynamicDoc2.Models">
+  <class name="Field" table="Field">
+    <id name="Id" column="Id" type="int" unsaved-value="0">
+      <generator class="native">
+      </generator>
+    </id>
+    <property name="Name" column="Name" type="String" not-null="true"></property>
+
+    <many-to-one name="FieldType" class="FieldType" fetch="select" lazy="false" column="FieldTypeId" not-null="true" cascade="save-update" />
+
+  </class>
+</hibernate-mapping>
+
+

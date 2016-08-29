@@ -3,12 +3,18 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using DynamicDoc2.IDataAccess;
 
 namespace DynamicDoc2.DataAccess
 {
-    public class LoginDataAccess : NhibernateDataProvider
+    public class LoginDataAccess : NhibernateDataProvider, ILoginDataAccess
     {
+        IUserDataAccess UserDataAccess;
 
+        public LoginDataAccess(IUserDataAccess UserDataAccess)
+        {
+            this.UserDataAccess = UserDataAccess;
+        }
 
         public bool CheckLogin(string userName, string password)
         {
@@ -21,18 +27,22 @@ namespace DynamicDoc2.DataAccess
 
         public void LoginUser(string userName)
         {
-            var userDao = new UserDataAccess();
-            var user = userDao.GetUserByName(userName);
-            user.LoggedIn = 1;
-            userDao.SaveUser(user);
+            ChangeLogin(userName, 1);
+        }
+
+        private void ChangeLogin(string userName, int loginValue)
+        {
+            var user = UserDataAccess.GetUserByName(userName);
+            if (user != null)
+            {
+                user.LoggedIn = loginValue;
+                UserDataAccess.SaveUser(user);
+            }
         }
 
         public void Logout(string userName)
         {
-            var userDao = new UserDataAccess();
-            var user = userDao.GetUserByName(userName);
-            user.LoggedIn = 0;
-            userDao.SaveUser(user);
+            ChangeLogin(userName, 0);
         }
     }
 }

@@ -2,6 +2,9 @@ using System.Web.Mvc;
 using Microsoft.Practices.Unity;
 using Unity.Mvc4;
 using DynamicDoc2.Service;
+using DynamicDoc2.DataAccess;
+using DynamicDoc2.IService;
+using DynamicDoc2.IDataAccess;
 
 namespace DynamicDoc2
 {
@@ -18,16 +21,23 @@ namespace DynamicDoc2
 
     private static IUnityContainer BuildUnityContainer()
     {
-
         var container = new UnityContainer();
 
-        // register all your components with the container here
-        // it is NOT necessary to register your controllers
+        // Data Access Layer
+        container.RegisterType<ILoginDataAccess, LoginDataAccess>();
+        container.RegisterType<IUserDataAccess, UserDataAccess>();
+        container.RegisterType<IFieldTypeDataAccess, FieldTypeDataAccess>();
+        container.RegisterType<IFieldDataAccess, FieldDataAccess>();
+
+
+        // Service Layer
         container.RegisterType<ILoginService, LoginService>();
         container.RegisterType<IUserService, UserService>();
+        container.RegisterType<IFieldTypeService, FieldTypeService>();
+        container.RegisterType<IFieldService, FieldService>();
+        
 
-            // e.g. container.RegisterType<ITestService, TestService>();    
-            RegisterTypes(container);
+        RegisterTypes(container);
 
         return container;
     }

@@ -3,10 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using DynamicDoc2.IDataAccess;
 
 namespace DynamicDoc2.DataAccess
 {
-    public class UserDataAccess : NhibernateDataProvider
+    public class UserDataAccess : NhibernateDataProvider, IUserDataAccess
     {
         public User GetUserById(int userId)
         {

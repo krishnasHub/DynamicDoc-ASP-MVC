@@ -1,19 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using DynamicDoc2.Models;
-using DynamicDoc2.DataAccess;
+using DynamicDoc2.IService;
+using DynamicDoc2.IDataAccess;
 
 namespace DynamicDoc2.Service
 {
     public class UserService : IUserService
     {
-        private UserDataAccess UserDataAccess;
+        private IUserDataAccess UserDataAccess;
 
-        public UserService()
+        public UserService(IUserDataAccess UserDataAccess)
         {
-            UserDataAccess = new UserDataAccess();
+            this.UserDataAccess = UserDataAccess;
         }
 
         public List<User> GetAllUsers()

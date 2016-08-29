@@ -1,18 +1,16 @@
-﻿using DynamicDoc2.DataAccess;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿
+using DynamicDoc2.IService;
+using DynamicDoc2.IDataAccess;
 
 namespace DynamicDoc2.Service
 {
     public class LoginService : ILoginService
     {
-        private LoginDataAccess LoginDataAccess;
+        private ILoginDataAccess LoginDataAccess;
 
-        public LoginService()
+        public LoginService(ILoginDataAccess LoginDataAccess)
         {
-            LoginDataAccess = new LoginDataAccess();
+            this.LoginDataAccess = LoginDataAccess;
         }
 
         public bool CheckLogin(string userName, string password)

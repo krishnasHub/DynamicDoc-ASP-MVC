@@ -259,9 +259,18 @@
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DynamicDocumentController.cs" />
+    <Compile Include="Controllers\FieldController.cs" />
+    <Compile Include="Controllers\FieldTypeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="DataAccess\FieldDataAccess.cs" />
+    <Compile Include="DataAccess\FieldTypeDataAccess.cs" />
+    <Compile Include="IDataAccess\IFieldDataAccess.cs" />
+    <Compile Include="IDataAccess\IFieldTypeDataAccess.cs" />
+    <Compile Include="IDataAccess\ILoginDataAccess.cs" />
+    <Compile Include="IDataAccess\IUserDataAccess.cs" />
     <Compile Include="DataAccess\LoginDataAccess.cs" />
     <Compile Include="DataAccess\NhibernateDataProvider.cs" />
     <Compile Include="DataAccess\UserDataAccess.cs" />
@@ -270,12 +279,18 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Document.cs" />
+    <Compile Include="Models\Field.cs" />
+    <Compile Include="Models\FieldType.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service\ILoginService.cs" />
-    <Compile Include="Service\IUserService.cs" />
+    <Compile Include="Service\FieldService.cs" />
+    <Compile Include="Service\FieldTypeService.cs" />
+    <Compile Include="IService\IFieldService.cs" />
+    <Compile Include="IService\IFieldTypeService.cs" />
+    <Compile Include="IService\ILoginService.cs" />
+    <Compile Include="IService\IUserService.cs" />
     <Compile Include="Service\LoginService.cs" />
     <Compile Include="Service\UserService.cs" />
     <Compile Include="Startup.cs" />
@@ -296,6 +311,12 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <Content Include="Mapping\Document.hbm.xml" />
+    <EmbeddedResource Include="Mapping\FieldType.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mapping\Field.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="Scripts\bootstrap.js" />

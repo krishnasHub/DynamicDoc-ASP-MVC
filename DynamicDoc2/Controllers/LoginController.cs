@@ -1,15 +1,10 @@
-﻿using DynamicDoc2.DataAccess;
-using DynamicDoc2.Models;
-using DynamicDoc2.Service;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using DynamicDoc2.Models;
+using DynamicDoc2.IService;
 using System.Web.Mvc;
 
 namespace DynamicDoc2.Controllers
 {
-    public class LoginController : Controller
+    public class LoginController : DynamicDocumentController
     {
         ILoginService LoginService;
         IUserService UserService;
@@ -24,21 +19,21 @@ namespace DynamicDoc2.Controllers
         public JsonResult Login(string userName, string password)
         {
             if (userName == null || password == null)
-                return Json(new { isSuccess = false, error = "Invalid arguments."}, JsonRequestBehavior.AllowGet);
+                return GetDynamicJson(false, "Invalid arguments.");
 
             var checkSuccess = LoginService.CheckLogin(userName, password);
             User user = null;
             if(checkSuccess)
-                user = UserService.GetUserByName(userName);                
+                user = UserService.GetUserByName(userName);
 
-            return Json(new { isSuccess = checkSuccess, user = user}, JsonRequestBehavior.AllowGet);
+            return GetDynamicJson(new { user = user });
         }
 
         public JsonResult Logout(string userName)
         {
             LoginService.Logout(userName);
 
-            return Json(new { isSuccess = true }, JsonRequestBehavior.AllowGet);
+            return GetDynamicJson(true);
         }
     }
 }

@@ -7,6 +7,7 @@
     <!--<property name="connection.connection_string">Data Source=documentdb.cqg9rthfiuyt.us-east-1.rds.amazonaws.com,1433;Initial Catalog=Documentdb;User id=Document_Db;Password=Document_Db;Integrated Security=False;MultipleActiveResultSets=True</property>-->
     <property name="dialect">NHibernate.Dialect.MsSql2012Dialect</property>
     <property name="show_sql">true</property>
+    <property name="format_sql">true</property>
     <mapping assembly="DynamicDoc2" />
   </session-factory>
 </hibernate-configuration>

@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DynamicDoc2.Service
+namespace DynamicDoc2.IDataAccess
 {
-    public interface ILoginService
+    public interface ILoginDataAccess
     {
         bool CheckLogin(string userName, string password);
-
+        void LoginUser(string userName);
         void Logout(string userName);
     }
 }
