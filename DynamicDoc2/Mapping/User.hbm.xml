@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="DynamicDoc2" namespace="DynamicDoc2.Models">
-  <class name="User" table="DD_User">
+  <class name="User" table="[User]">
     <id name="Id" column="Id" type="int" unsaved-value="0">
       <generator class="native">
       </generator>
@@ -8,6 +8,7 @@
     <property name="Name" column="Name" type="String" not-null="true"></property>
     <property name="Password" column="Password" type="String" not-null="true"></property>
     <property name="EmailId" column="EmailId" type="String" not-null="true"></property>
+    <property name="RoleName" column="RoleName" type="String" not-null="false"></property>
 
     <property name="LoggedIn" column="LoggedIn" type="int" not-null="true"></property>
   </class>
