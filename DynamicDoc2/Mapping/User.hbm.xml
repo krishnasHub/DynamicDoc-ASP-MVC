@@ -9,6 +9,7 @@
     <property name="Password" column="Password" type="String" not-null="true"></property>
     <property name="EmailId" column="EmailId" type="String" not-null="true"></property>
     <property name="RoleName" column="RoleName" type="String" not-null="false"></property>
+    
 
     <property name="LoggedIn" column="LoggedIn" type="int" not-null="true"></property>
   </class>
