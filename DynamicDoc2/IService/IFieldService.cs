@@ -11,5 +11,6 @@ namespace DynamicDoc2.IService
     {
         List<Field> GetallFields();
         Field GetFieldById(int id);
+        Field CreateField(string fieldName, int fieldTypeId);
     }
 }

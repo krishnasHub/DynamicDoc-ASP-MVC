@@ -16,5 +16,10 @@ namespace DynamicDoc2.Controllers
         {
             return GetDynamicJson(new { AllFields = FieldService.GetallFields() });
         }
+
+        public JsonResult CreateNewField(string fieldName, int fieldID)
+        {
+            return 
+        }
     }
 }

@@ -22,5 +22,14 @@ namespace DynamicDoc2.DataAccess
         {
             return GetSession().Get<Field>(id);
         }
+
+        public void SaveField(Field field)
+        {
+            var session = GetSession();
+            session.BeginTransaction();
+            session.SaveOrUpdate(field);
+            session.Transaction.Commit();
+            
+        }
     }
 }

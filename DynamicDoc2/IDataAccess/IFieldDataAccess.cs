@@ -11,5 +11,6 @@ namespace DynamicDoc2.IDataAccess
     {
         Field GetFieldById(int id);
         List<Field> GetallFields();
+        void SaveField(Field field);
     }
 }
