@@ -19,14 +19,14 @@ namespace DynamicDoc2.Service
             this.FieldTypeService = FieldTypeService;
         }
 
-        public Field CreateField(string fieldName, int fieldTypeId)
+        public void CreateField(string fieldName, int fieldTypeId)
         {
 
             FieldType fieleType = FieldTypeService.GetFieldTypeById(fieldTypeId);
             Field field = new Field();
             field.Name = fieldName;
             field.FieldType = fieleType;
-            return FieldDataAccess.SaveField(field);
+            FieldDataAccess.SaveField(field);
         }
 
         public List<Field> GetallFields()

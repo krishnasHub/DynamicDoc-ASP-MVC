@@ -19,7 +19,7 @@ namespace DynamicDoc2.Controllers
 
         public JsonResult CreateNewField(string fieldName, int fieldID)
         {
-            return null;
+            return GetDynamicJson(true);
         }
     }
 }
