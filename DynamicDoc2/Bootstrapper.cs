@@ -29,6 +29,7 @@ namespace DynamicDoc2
         container.RegisterType<IFieldTypeDataAccess, FieldTypeDataAccess>();
         container.RegisterType<IFieldDataAccess, FieldDataAccess>();
         container.RegisterType<IDocumentDataAccess, DocumentDataAccess>();
+        container.RegisterType<IDocumentFieldDataAccess, DocumentFieldDataAccess>();
 
 
         // Service Layer
@@ -37,6 +38,7 @@ namespace DynamicDoc2
         container.RegisterType<IFieldTypeService, FieldTypeService>();
         container.RegisterType<IFieldService, FieldService>();
         container.RegisterType<IDocumentService, DocumentService>();
+        container.RegisterType<IDocumentFieldService, DocumentFieldService>();
         
 
         RegisterTypes(container);

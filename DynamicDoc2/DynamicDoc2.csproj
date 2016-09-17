@@ -260,6 +260,7 @@
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DocumentController.cs" />
+    <Compile Include="Controllers\DocumentFieldController.cs" />
     <Compile Include="Controllers\DynamicDocumentController.cs" />
     <Compile Include="Controllers\FieldController.cs" />
     <Compile Include="Controllers\FieldTypeController.cs" />
@@ -267,9 +268,11 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="DataAccess\DocumentDataAccess.cs" />
+    <Compile Include="DataAccess\DocumentFieldDataAccess.cs" />
     <Compile Include="DataAccess\FieldDataAccess.cs" />
     <Compile Include="DataAccess\FieldTypeDataAccess.cs" />
     <Compile Include="IDataAccess\IDocumentDataAccess.cs" />
+    <Compile Include="IDataAccess\IDocumentFieldDataAccess.cs" />
     <Compile Include="IDataAccess\IFieldDataAccess.cs" />
     <Compile Include="IDataAccess\IFieldTypeDataAccess.cs" />
     <Compile Include="IDataAccess\ILoginDataAccess.cs" />
@@ -280,15 +283,18 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="IService\IDocumentFieldService.cs" />
     <Compile Include="IService\IDocumentService.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Document.cs" />
+    <Compile Include="Models\DocumentField.cs" />
     <Compile Include="Models\Field.cs" />
     <Compile Include="Models\FieldType.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\DocumentFieldService.cs" />
     <Compile Include="Service\DocumentService.cs" />
     <Compile Include="Service\FieldService.cs" />
     <Compile Include="Service\FieldTypeService.cs" />
@@ -322,6 +328,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Mapping\Field.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mapping\DocumentField.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
