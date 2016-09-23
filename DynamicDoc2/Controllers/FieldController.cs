@@ -22,5 +22,15 @@ namespace DynamicDoc2.Controllers
             FieldService.CreateField(fieldName, fieldTypeId);
             return GetDynamicJson(true);
         }
+
+        public JsonResult GetFieldById(int id)
+        {
+            return GetDynamicJson(FieldService.GetFieldById(id));
+        }
+
+        public JsonResult GetAllFieldsByName(string name)
+        {
+            return GetDynamicJson(new { AllFields = FieldService.GetAllFieldsByName(name) });
+        }
     }
 }

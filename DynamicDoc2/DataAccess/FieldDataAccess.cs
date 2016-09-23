@@ -31,5 +31,14 @@ namespace DynamicDoc2.DataAccess
             session.Transaction.Commit();
             
         }
+
+        public List<Field> GetAllFieldsByName(string name)
+        {
+            var session = GetSession();
+            var criteria = session.CreateCriteria<Field>();
+            var l = criteria.List<Field>().Where<Field>(n => n.Name.ToLower().Contains(name.ToLower())).ToList();
+
+            return l;
+        } 
     }
 }

@@ -34,9 +34,16 @@ namespace DynamicDoc2.Service
             return FieldDataAccess.GetallFields();
         }
 
+        public List<Field> GetAllFieldsByName(string name)
+        {
+            return FieldDataAccess.GetAllFieldsByName(name);
+        }
+
         public Field GetFieldById(int id)
         {
             return FieldDataAccess.GetFieldById(id);
         }
+
+
     }
 }
